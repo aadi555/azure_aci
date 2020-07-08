@@ -8,7 +8,8 @@ variable "dns_name_label" { }
 
 variable "os_type" {
   default   = "linux"
-  description   = "The type of container os"}
+  description   = "The type of container os"
+  }
 
 variable "container_name" { }
 
