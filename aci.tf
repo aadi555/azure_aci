@@ -12,17 +12,19 @@ resource "azurerm_container_group" "aci_cg" {
       cpu       = "${var.cpu_core_number}"
       memory    = "${var.memory_size}"
       port      = "${var.port_number}"
-  }
-  tags = {
-    app = var.app_name
-    env = var.env_name
-  }
-  volume {
+
+    volume {
       name       = "sftp"
       mount_path = "/home/%u/upload"
       read_only  = false
       share_name = "${azurerm_storage_share.aci.name}"
       storage_account_name = "${azurerm_storage_account.aci.name}"
       storage_account_key  = "${azurerm_storage_account.aci.primary_access_key}"
+      }
+    }
+  
+  tags = {
+    app = var.app_name
+    env = var.env_name
   }
 }
