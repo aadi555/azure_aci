@@ -18,8 +18,8 @@ resource "azurerm_container_group" "aci_cg" {
     env = var.env_name
   }
   volume {
-      name       = "${var.volume_name}"
-      mount_path = "${var.path}"
+      name       = "sftp"
+      mount_path = "/home/%u/upload"
       read_only  = false
       share_name = "${azurerm_storage_share.aci.name}"
       storage_account_name = "${azurerm_storage_account.aci.name}"
