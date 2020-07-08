@@ -36,8 +36,4 @@ variable "restart_policy" {
 variable "app_name" { }
 
 variable "env_name" { }
-
-variable "name" { }
-
-variable "path" { }
   
