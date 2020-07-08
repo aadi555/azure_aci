@@ -17,4 +17,12 @@ resource "azurerm_container_group" "aci_cg" {
     app = var.app_name
     env = var.env_name
   }
+  volume {
+      name       = "${var.volume_name}"
+      mount_path = "${path}"
+      read_only  = false
+      share_name = "${azurerm_storage_share.example.name}"
+      storage_account_name = "${azurerm_storage_account.aci.name}"
+      storage_account_key  = "${azurerm_storage_account.aci.primary_access_key}"
+  }
 }
