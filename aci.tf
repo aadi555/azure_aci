@@ -14,14 +14,14 @@ resource "azurerm_container_group" "aci_cg" {
       port      = "${var.port_number}"
 
     volume {
-      name       = "sftp"
+      volume_name       = "sftp"
       mount_path = "/home/%u/upload"
       read_only  = false
       share_name = "${azurerm_storage_share.aci.name}"
       storage_account_name = "${azurerm_storage_account.aci.name}"
       storage_account_key  = "${azurerm_storage_account.aci.primary_access_key}"
-      }
     }
+  }
   
   tags = {
     app = var.app_name
